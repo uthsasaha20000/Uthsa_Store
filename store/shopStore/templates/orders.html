@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %} Kazi Store | Orders{% endblock %}
+
+{% load cart %}
+{% block content %}
+
+
+<br>
+    <h1 align = "center"><u>Your Orders</u></h1>
+
+
+    <div class="container">
+        <div class = "border rounded p-4 m-4">
+            <table class="table" border = "">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Product Image</th>
+                        <th>Order Date</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Order Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for order in orders %}
+                    <tr>
+                        <td scope="row"> {{order.product.name}} </td>
+                        <td><img align = "center" src="{{order.product.image.url}}" class="card-img-top mt-3" alt="..." style=" width:100px ;height:100px; border-radius: 50px;"></td>
+                        <td>{{order.date}}</td>
+                        <td>{{order.price}} &#2547; </td>
+                        <td>{{order.quantity}}</td>
+                        <td>{{order.quantity|multiply:order.price}} &#2547; </td>
+                        {% if order.status %}
+                            <td><p class = "btn btn-success" style="border-radius: 25px;"><small>Completed</small></p></td> 
+                        {% else %}
+                            <td><p class = "btn btn-warning" style="border-radius: 25px;"><small>Pending</small></p></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    
+    <br>
+    <p align="center"><a class = "btn btn-outline-danger" href='/' >Back to Home </a></p>
+{% endblock %}

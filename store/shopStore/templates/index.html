@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block head %}  Uthsa Store | Home{% endblock %}
+
+{% block content %}
+{% load cart %}
+   
+
+
+  {% if request.session.customer %} 
+      <p align = "right" style="color: blue"><img align = "center" src="https://m.media-amazon.com/images/I/31XSun7-+cL._SY300_SX300_.jpg" style=" width:15px;height:15px; border-radius: 10px;" alt="aa"><b> Logged in &nbsp; &nbsp; &nbsp;</b> </p>
+  {% else %}
+    <h4><p align = "center" style="color: red"><b>You haven't logged in</b></p></h4>
+    
+  {% endif %}
+
+  <div class="container-fluid mt-3">
+  <div class="row">
+    
+    <div class="col-lg-2">
+      <p><img align = "center" src = "https://cdn.dribbble.com/users/3874322/screenshots/15083246/media/c09b5278d22864c901679848eaaefdf4.gif" width = "300px" height = "200px" alt = "Myself" align = "center"></p>
+  
+      <div class="list-group">
+        <a href="/" class="mt-1 mb-1 btn btn-outline-info">All Products</a>
+
+				{% for category in categories %}
+				<a href="/?category={{category.id}}"
+					class="mt-1 mb-1 btn btn-outline-danger">{{category.name}}</a>
+				{% endfor %}
+
+      </div>
+    </div> 
+
+    <div id='products' class="col-lg-10">
+      <div class="row mx-auto">
+        {% for product in products %}
+        <div class="card mx-auto mb-3" id = {{product.id}} style="width: 18rem;background-color:lightcyan">
+          <img align = "center" src="{{product.image.url}}" class="card-img-top mt-3" alt="..." style=" width : auto; height:250px; border-radius: 150px;">
+          <div class="card-body">
+            <p align="center" style="color:blue"><b>{{product.name}}</b></p> 
+            <p align="center" style="color:red"> <b>{{product.price}} <sup>&#2547;</sup></b> </p>
+            <!-- <p align="center"> <b>{{product.category}}</b></p> -->
+          </div>
+
+          <div class="card-footer row no-gutters" style="background-color:white">
+              
+            {%if product|is_in_cart:request.session.cart %}
+              <div class = "row">
+                <form action="/#{{product.id}}" method = "POST" class = "col-2">
+                  {% csrf_token %}
+                  <input hidden type="text" name = 'product' value = '{{product.id}}'>
+                  <input hidden type="text" value = True name = 'remove'>
+                  <input type= "submit" value = "-" class = "col btn btn-block btn-outline-danger mt-3 mb-4">
+                </form>
+
+                {% if product|cart_quantity:request.session.cart > 1 %}
+                    <div class = "text-center col "><button type="button" class="btn btn-warning mt-3"><b>{{product|cart_quantity:request.session.cart}} items</b></button></div>
+                {% else %}
+                    <div class = "text-center col "><button type="button" class="btn btn-warning mt-3"><b>{{product|cart_quantity:request.session.cart}} item</b></button></div>
+                {% endif%}
+
+                <form action="/#{{product.id}}" method = "POST" class = "col-2">
+                  {% csrf_token %}
+                  <input hidden type="text" name = 'product' value = '{{product.id}}'>
+                  <input type= "submit" value = "+" class = "col btn btn-block btn-outline-success mt-3 mb-4">
+                </form>
+              </div>
+            {% else %}
+                <form action="/#{{product.id}}" method = "POST" class = "btn-block mt-3 mb-4">
+                  {% csrf_token %}
+                  <input hidden type="text" name = 'product' value = '{{product.id}}'>
+                  <p align="center" ><input type = "submit" class="btn btn-outline-warning btn-block" value = "Add to Cart"></p>
+                </form>
+            {% endif %}
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
