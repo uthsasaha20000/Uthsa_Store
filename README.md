@@ -1,14 +1,14 @@
 <img src ="https://cdn.dribbble.com/users/398490/screenshots/1297496/dribbble_4.gif" width= "800px" height = "400px">
 
 # [<img src = "https://cdn.dribbble.com/users/1138721/screenshots/10809828/media/478d32b2e65c8c3194b7f2154e179231.gif" align = "center" width = "60px" height = "40px">]() Backstory
->**Kazi departmental store is a physical store located in cumilla. The customer base is mostly people living at jhautola.<br><br>              We were given a task by one of our supervisors that we have to build a software for an  enterprise <br><br>                                                                 This project was a part of one of our sessional courses.We decided to build a website where customers can order a product and the admin can see the products ordered by customers.**
+>We were given a task by one of our supervisors that we have to build a software for an  enterprise <br><br>                                                                 This project was a part of one of our sessional courses.We decided to build a website where customers can order a product and the admin can see the products ordered by customers.**
 
 
 ## <img src = "https://res.cloudinary.com/practicaldev/image/fetch/s--p6EqClgv--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fizbec05u7a429pqqllr.png" align = "center" width = "60px"> Why Django?
 We decided to complete this project in django because:
-  - Takes less time to build prototype.
-  - Comes with SQLite as database.
-  - Django comes with a default admin panel(which we later customized) which made our job easier.
+  - Takes less time to build applications.
+  - Has a default database called SQLite
+  - Django comes with a default admin panel(which we can later customize) which made our job easier.
 
 # <a href = "https://youtu.be/x27qBDEJ1HY"> <img align = "center" src = "https://cdn.dribbble.com/users/1369921/screenshots/3699553/media/632fe87d30ef9413a3512dd317727b8b.gif" width = "60px" height = "40px"></a> Demo
  <p> You will find video demo &nbsp;<b>Here</b>➡️ <b><a href = "https://youtu.be/x27qBDEJ1HY">Youtube</a></b></p>
@@ -83,21 +83,7 @@ python manage.py migrate
 ```
 </details>
 
-<details> 
-<summary>How to create a Customized Admin Panel</summary>
 
-We have to install jazzmin using terminal
-
-To install ,
-Run the following commands in the terminal 
-```
-pip install -U django-jazzmin
-```
-Then go to `settings.py` and type `'jazzmin',` in the INSTALLED APPS
-
-</details>
-
-<details> 
 <summary>How to install pillow</summary>
  
 ```
