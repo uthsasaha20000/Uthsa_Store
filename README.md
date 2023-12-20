@@ -10,8 +10,7 @@ We decided to complete this project in django because:
   - Has a default database called SQLite
   - Django comes with a default admin panel(which we can later customize) which made our job easier.
 
-# <a href = "https://youtu.be/x27qBDEJ1HY"> <img align = "center" src = "https://cdn.dribbble.com/users/1369921/screenshots/3699553/media/632fe87d30ef9413a3512dd317727b8b.gif" width = "60px" height = "40px"></a> Demo
- <p> You will find video demo &nbsp;<b>Here</b>➡️ <b><a href = "https://youtu.be/x27qBDEJ1HY">Youtube</a></b></p>
+
 
 
 
